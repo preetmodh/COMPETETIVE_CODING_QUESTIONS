@@ -11,35 +11,17 @@ h=list(map(int,input().split()))
 a=list(map(int,input().split()))
 for _ in range(int(q)):
     x,b,c=input().split()
-    ans,x,b,c=0,int(x),int(b),int(c)
+    step,ans,x,b,c=0,0,int(x),int(b),int(c)
     if x==1:
         a[b-1]=c
-        continue
     else:
-        step=0
-        if h[b-1]>h[c-1]:
-            pass
-        elif h[b-1]==h[c-1]:
-            ans=-1
-            print(ans)
-            continue
-        else:
-            ans=-1
-            print(ans)
-            continue
-        if b==c:
-            ans=a[b-1]
-            print(ans)
-            continue
-        elif b>c:
-            b,c=c-1,b-1
+        if b>c:
             step=1
             cc=c+1
         else:
-            b,c=c-1,b-1
             step=-1
             cc=c-1
-        
+        b,c=c-1,b-1
         maxv=h[b]
         ans=a[b]
         for i in range(b,cc,step):
