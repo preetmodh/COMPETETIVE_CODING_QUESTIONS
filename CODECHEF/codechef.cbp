@@ -43,6 +43,8 @@
 		</Unit>
 		<Unit filename="GuessingGame.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
 		</Unit>
 		<Unit filename="ThatIsMyScore.c">
 			<Option compilerVar="CC" />
@@ -103,6 +105,9 @@
 			<Option compilerVar="CC" />
 			<Option compile="0" />
 			<Option link="0" />
+		</Unit>
+		<Unit filename="mst.c">
+			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pintuAndFruits.c">
 			<Option compilerVar="CC" />
