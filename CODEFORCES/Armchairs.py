@@ -301,25 +301,75 @@ inp=inputs()
 
 
 def main():
-    for t in range(inp.single()):
-        n=inp.single()
-        a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
-            else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
+    n=inp.single()
+    a=inp.list()
+    a1=list(reversed(a))
+    ans=0
+    ans1=0
+    if 1 not in a:
+        print(0)
+        return
+    for i in range(len(a)):
+        if a[i]==1:
+            ind1=10**5
+            ind2=10**5
+            flag=0
+            for j in range(i+1,n):
+                if a[j]==0:
+                    ind1=j
+                    a[i]=-1
+                    flag=1
+                    break
+            for j in range(i,-1,-1):
+                if a[j]==0:
+                    ind2=j
+                    a[i]=-1
+                    flag=1
+                    break
+            if flag==1:
+                v1=abs(ind1-i)
+                v2=abs(ind2-i)
+                
+                if v1<=v2:
+                    ans+=v1
+                    a[ind1]=-1
+                else:
+                    ans+=v2
+                    a[ind2]=-1
+    
+    a=a1.copy()
+    for i in range(len(a)):
+        if a[i]==1:
+            ind1=10**5
+            ind2=10**5
+            flag=0
+            for j in range(i+1,n):
+                if a[j]==0:
+                    ind1=j
+                    a[i]=-1
+                    flag=1
+                    break
+            for j in range(i,-1,-1):
+                if a[j]==0:
+                    ind2=j
+                    a[i]=-1
+                    flag=1
+                    break
+            if flag==1:
+                v1=abs(ind1-i)
+                v2=abs(ind2-i)
+                
+                if v1<=v2:
+                    ans1+=v1
+                    a[ind1]=-1
+                else:
+                    ans1+=v2
+                    a[ind2]=-1
+               
+    
+    print(min(ans,ans1))
 
-
+    
 
 
 if __name__ == "__main__":

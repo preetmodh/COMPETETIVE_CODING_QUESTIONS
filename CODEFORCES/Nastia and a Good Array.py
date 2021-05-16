@@ -299,25 +299,39 @@ inp=inputs()
 
 
 
-
 def main():
     for t in range(inp.single()):
         n=inp.single()
         a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
-            else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
+        mn=min(a)
+        mx=mn+1
+        ind=a.index(mn)
+        b=[]
+        if ind%2==1:
+            for i in range(len(a)):
+                if i==ind:
+                    continue
+                if i%2==1:
+                    a[i]=mn
+                    b.append([i+1,ind+1,mn,mn])
+                else:
+                    a[i]=mx
+                    b.append([i+1,ind+1,mx,mn])
+        else:
+            for i in range(len(a)):
+                if i==ind:
+                    continue
+                if i%2==0:
+                    a[i]=mn
+                    b.append([i+1,ind+1,mn,mn])
+                else:
+                    a[i]=mx
+                    b.append([i+1,ind+1,mx,mn])
+
+
+        print(len(b))
+        for i in b:
+            print(*i)
 
 
 

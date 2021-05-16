@@ -296,29 +296,53 @@ class inputs:
 inp=inputs()
 ########################################################
 
+def split_list(lst, chunks):
 
+    chunks_yielded = 0
+    total_sum = sum(lst)
+    avg_sum = total_sum/float(chunks)
+    chunk = []
+    chunksum = 0
+    sum_of_seen = 0
+
+    for i, item in enumerate(lst):
+
+        if chunks - chunks_yielded == 1:
+
+            yield chunk + lst[i:]
+            raise StopIteration
+
+        to_yield = chunks - chunks_yielded
+        chunks_left = len(lst) - i
+        if to_yield > chunks_left:
+    
+            if chunk:
+                yield chunk
+            yield from ([x] for x in lst[i:])
+            break
+
+        sum_of_seen += item
+        if chunksum < avg_sum:
+ 
+            chunk.append(item)
+            chunksum += item
+        else:
+
+            yield chunk
+
+            avg_sum = (total_sum - sum_of_seen)/(to_yield - 1)
+            chunks_yielded += 1
+            chunksum = item
+            chunk = [item]
 
 
 
 def main():
     for t in range(inp.single()):
-        n=inp.single()
+        n,m,x=inp.mul()
         a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
-            else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
-
+        b=[0]*m
+        
 
 
 

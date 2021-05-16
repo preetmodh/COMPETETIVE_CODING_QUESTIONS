@@ -302,24 +302,25 @@ inp=inputs()
 
 def main():
     for t in range(inp.single()):
-        n=inp.single()
+        n,l,r=inp.mul()
         a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
-            else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
+        x=dict(Counter(a[0:l]))
+        y=dict(Counter(a[r-1:n]))
+        cost=0
+        if len(x)<=len(y):
+            for k,v in y.items():
+                temp=y[k] - x.get(k, 0)
+                if temp<=0:
+                    temp=0
+                cost=cost+ temp
+        else:
+            for k,v in x.items():
+                temp=x[k] - y.get(k, 0)
+                if temp<=0:
+                    temp=0
+                cost=cost+ temp
 
-
+        print(cost)
 
 
 if __name__ == "__main__":

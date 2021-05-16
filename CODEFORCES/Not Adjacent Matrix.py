@@ -303,22 +303,24 @@ inp=inputs()
 def main():
     for t in range(inp.single()):
         n=inp.single()
-        a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
+        eves=[]
+        odds=[]
+        if n==2:
+            print(-1)
+            continue
+        for i in range(1,n*n + 1):
+            if i%2==0:
+                eves.append(i)
             else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
-
+                odds.append(i)
+        a=odds+eves
+        for i in range(n):
+            print(i,end=' ')
+            if j%n==0:
+                j=0
+                print()
+            j+=1
+        print()
 
 
 

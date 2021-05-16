@@ -304,7 +304,6 @@ def main():
     for t in range(inp.single()):
         n=inp.single()
         a=inp.list()
-        b=list(range(1,n+1))
         c=0
         l=[]
         d={}
@@ -316,8 +315,8 @@ def main():
             else:
                 d[l[i]]+=1
         for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
+            c+=(d[i]*(d[i]-1))//2
+        print(c)
 
 
 

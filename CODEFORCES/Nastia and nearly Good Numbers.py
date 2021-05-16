@@ -302,24 +302,12 @@ inp=inputs()
 
 def main():
     for t in range(inp.single()):
-        n=inp.single()
-        a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
-            else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
-
-
+        a,b=inp.mul()
+        if  b==1:
+            print("NO")
+        else:
+            print("YES")
+            print(a*b,a,a*b+a)
 
 
 if __name__ == "__main__":

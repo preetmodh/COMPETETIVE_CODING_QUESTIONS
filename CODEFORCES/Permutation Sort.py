@@ -304,22 +304,15 @@ def main():
     for t in range(inp.single()):
         n=inp.single()
         a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
-            else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
-
-
+        if sorted(a)==a:
+            print(0)
+            continue
+        elif a[0]==min(a) or a[-1]==max(a):
+            print(1)
+        elif a[0]==max(a) and a[-1]==min(a):
+            print(3)
+        else:
+            print(2)
 
 
 if __name__ == "__main__":

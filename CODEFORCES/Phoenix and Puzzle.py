@@ -296,28 +296,33 @@ class inputs:
 inp=inputs()
 ########################################################
 
-
+def is_square(apositiveint):
+  x = apositiveint // 2
+  seen = set([x])
+  while x * x != apositiveint:
+    x = (x + (apositiveint // x)) // 2
+    if x in seen: return False
+    seen.add(x)
+  return True
 
 
 
 def main():
     for t in range(inp.single()):
         n=inp.single()
-        a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
-            else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
+        ans="NO"
+        if n==2 or n==4:
+            print("YES")
+            continue
+        if n%2==1:
+            print(ans)
+        else:
+            if is_square(n//2):
+                ans="YES"
+            elif n%4==0:
+                if is_square(n//4):
+                    ans="YES"
+            print(ans)
 
 
 

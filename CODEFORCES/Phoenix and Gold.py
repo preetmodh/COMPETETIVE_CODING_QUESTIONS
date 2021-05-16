@@ -302,24 +302,24 @@ inp=inputs()
 
 def main():
     for t in range(inp.single()):
-        n=inp.single()
+        n,x=inp.mul()
         a=inp.list()
-        b=list(range(1,n+1))
-        c=0
-        l=[]
-        d={}
-        for i in range(len(a)):
-            l.append(a[i]-i)
-        for i in range(n):
-            if l[i] not in d:
-                d[l[i]]=1
-            else:
-                d[l[i]]+=1
-        for i in d:
-            c=c+(d[i]*(d[i]-1))/2
-        print((c*(c-1))//2)
-
-
+        b=PrefixSum(a)
+        if x in b:
+            ind=b.index(x)
+            j=ind+1
+            if j>=n:
+                if ind!=0:
+                    j=0
+                else:
+                    j=ind-1
+            a[ind],a[j]=a[j],a[ind]
+        b=PrefixSum(a)
+        if x in b:
+            print("NO")
+        else:
+            print("YES")
+            print(*a)
 
 
 if __name__ == "__main__":
